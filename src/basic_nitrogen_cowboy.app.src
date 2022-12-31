@@ -1,0 +1,14 @@
+{application, basic_nitrogen_cowboy,
+ [{description, "A minimal cowboy/nitrogen web server."},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {basic_nitrogen_cowboy_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+  {licenses, ["Apache-2.0"]},
+  {links, []}
+ ]}.
