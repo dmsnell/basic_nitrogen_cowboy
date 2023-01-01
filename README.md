@@ -56,6 +56,21 @@ In the released version of `nitrogen` (as of the time of this writing) we have t
 In the upcoming major `nitrogen` release this additional `nitro_cache` step isn't necesssary.
 In both versions we also need to start `nprocreg` which `nitrogen` uses for name registration.
 
+### Copy `nitrogen` assets into `priv` directory and load them on page views.
+
+`nitrogen` relies on several JavaScript libraries and some CSS.
+These assets need to be available on the web server and we have to intruct browsers to download them (by adding them appropriately to the HTML we create).
+
+In the released version of `nitrogen` we copy these out of the `www` directory, but in the upcoming major release they have been moved into the `priv/www` directory instead.
+We'll use the `post_hooks` hook from `rebar3` to copy the files, and since we're copying them in the `post_hooks` we can safely tell `git` to ignore the files we're adding there.
+
+When including these on our rendered page there are two thing we need to include:
+ - script tags referencing the actual JavaScript dependencies
+ - a `[[[script]]]` template where `nitrogen` will write its inline JavaScript to initialize the page context any any already-queued interactions on the page, such as event wiring or console logs.
+
+Without the referenced libraries the inline JavaScript will crash; without the inline JavaScript none of the interactive content will initialize or run.
+With both of these things, however, we have a working, functioning, interactive `nitrogen` website!
+
 [nitrogen]: https://github.com/nitrogen/nitrogen_core
 [cowboy]: https://github.com/ninenines/cowboy/
 [nitrogen handlers]: https://nitrogenproject.com/doc/handlers#the-handlers
