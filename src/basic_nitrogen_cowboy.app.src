@@ -6,7 +6,10 @@
   {applications,
    [kernel,
     stdlib,
-	cowboy
+	cowboy,
+	nprocreg,
+	nitro_cache,
+	nitrogen_core
    ]},
   {env,[]},
   {modules, []},
