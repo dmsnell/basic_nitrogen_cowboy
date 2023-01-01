@@ -5,7 +5,8 @@
   {mod, {basic_nitrogen_cowboy_app, []}},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+	cowboy
    ]},
   {env,[]},
   {modules, []},
